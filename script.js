@@ -44,3 +44,24 @@ if (siteHeader && homeSection && "IntersectionObserver" in window) {
   }, { threshold: 0.08 });
   homeObserver.observe(homeSection);
 }
+
+/* Reveal cards gently as they enter the viewport */
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.classList.add("motion-ready");
+  const motionItems = document.querySelectorAll(
+    ".portrait-card, .focus-card, .portfolio-card, .contact-panel"
+  );
+  const motionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const siblings = [...entry.target.parentElement.children].filter((item) =>
+        item.matches(".focus-card, .portfolio-card")
+      );
+      const index = siblings.indexOf(entry.target);
+      entry.target.style.transitionDelay = index >= 0 ? `${index * 100}ms` : "0ms";
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.14, rootMargin: "0px 0px -35px 0px" });
+  motionItems.forEach((item) => motionObserver.observe(item));
+}
