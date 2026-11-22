@@ -214,3 +214,31 @@ html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){
   .portrait-card,.focus-card,.portfolio-card,.contact-panel,.float-chip{animation:none!important;translate:none!important;rotate:none!important}
 }
+
+/* Rounded floating glass navbar */
+.site-header{
+  width:min(1240px,calc(100% - 48px));
+  margin:14px auto 0;
+  border-radius:22px;
+  overflow:visible;
+  border:1px solid rgba(255,255,255,.78);
+  box-shadow:0 12px 34px rgba(41,78,120,.09);
+}
+.site-header.at-home{
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.48);
+  background:rgba(255,255,255,.16);
+  box-shadow:0 8px 28px rgba(41,78,120,.035);
+}
+.site-header:not(.at-home){
+  background:rgba(255,255,255,.68);
+  border-color:rgba(255,255,255,.86);
+}
+@media(max-width:680px){
+  .site-header{
+    width:calc(100% - 28px);
+    margin:10px auto 0;
+    border-radius:18px;
+  }
+  .site-header.at-home{border-radius:18px}
+}
