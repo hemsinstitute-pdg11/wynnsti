@@ -274,3 +274,49 @@ html{scroll-behavior:smooth}
   .site-header.at-home{border-radius:999px}
   .site-header:not(.at-home){border-radius:999px}
 }
+
+/* Mobile hero: keep the portrait card to the right instead of centered below */
+@media(max-width:680px){
+  .hero{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:18px;
+    padding-top:58px;
+    padding-bottom:38px;
+  }
+  .hero-copy{min-width:0}
+  .hero-visual{
+    width:100%;
+    height:330px;
+    margin:0;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding:0 8px 0 0;
+  }
+  .portrait-card{
+    width:clamp(190px,58vw,235px);
+    height:310px;
+    padding:11px;
+    margin-right:2px;
+    transform:rotate(1deg);
+  }
+  .portrait-top{font-size:7px;padding-bottom:9px}
+  .portrait-frame{height:218px;border-radius:12px}
+  .portrait-caption{padding-top:10px}
+  .portrait-caption strong{font-size:12px}
+  .portrait-caption div span{font-size:8px}
+  .orbit-a{width:260px;height:175px;right:0}
+  .orbit-b{width:290px;height:205px;right:-8px}
+  .chip-tech{left:0;top:42px}
+  .chip-trade{right:0;bottom:34px}
+  .float-chip{transform:scale(.88);transform-origin:center}
+  .visual-coordinate{right:4px;bottom:0;font-size:7px}
+}
+@media(max-width:390px){
+  .hero-visual{height:305px}
+  .portrait-card{width:190px;height:290px}
+  .portrait-frame{height:198px}
+  .chip-tech{left:-5px}
+  .chip-trade{right:-4px}
+}
