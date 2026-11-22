@@ -243,7 +243,7 @@ html{scroll-behavior:smooth}
   .site-header.at-home{border-radius:18px}
 }
 
-/* Full capsule navbar geometry — retain the existing Wynnsti palette */
+/* Full capsule navbar geometry — retain the existing Wynsti palette */
 .site-header{
   width:calc(100% - 32px);
   max-width:1320px;
