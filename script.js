@@ -35,3 +35,12 @@ if ("IntersectionObserver" in window) {
 
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
+const siteHeader = document.querySelector(".site-header");
+const homeSection = document.querySelector("#home");
+
+if (siteHeader && homeSection && "IntersectionObserver" in window) {
+  const homeObserver = new IntersectionObserver(([entry]) => {
+    siteHeader.classList.toggle("at-home", entry.isIntersecting);
+  }, { threshold: 0.08 });
+  homeObserver.observe(homeSection);
+}
