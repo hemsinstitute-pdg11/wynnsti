@@ -1,4 +1,4 @@
-# Wynnsti — Personal Website
+# Wynsti — Personal Website
 
 Personal branding website for **Wahyudi**, with the identity **Technology Enthusiast & Tradepreneur**.
 
@@ -28,7 +28,7 @@ Recommended image: vertical portrait, JPG or WebP, at least 900 × 1200 px. The 
 
 ## Update contact details
 
-In `index.html`, find the email link in the contact section and replace `hello@wynnsti.com` with the preferred contact email address.
+In `index.html`, find the email link in the contact section and replace `hello@wynsti.com` with the preferred contact email address.
 
 ## Publish
 
