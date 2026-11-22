@@ -523,3 +523,31 @@ body{color:#18263b}
     animation:none!important;translate:none!important;rotate:none!important;will-change:auto;
   }
 }
+
+/* Hem's Institute portfolio project preview */
+.project-link-card{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+}
+.project-preview{
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  margin:18px 0 18px;
+  border-radius:13px;
+  background:#e9f0f8;
+  border:1px solid rgba(45,83,132,.1);
+}
+.project-preview img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .6s cubic-bezier(.22,1,.36,1);
+}
+.project-link-card:hover .project-preview img{transform:scale(1.045)}
+.project-link-card:focus-visible{outline:3px solid rgba(57,120,246,.5);outline-offset:4px}
+.project-link-card>small{color:#3978c8}
