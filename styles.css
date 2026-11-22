@@ -100,3 +100,21 @@ body{background:var(--bg);color:var(--text)}
 
 /* Keep the fallback monogram hidden whenever the real profile photo loads */
 .portrait-fallback[hidden]{display:none!important}
+
+/* Subtle technical grid background inspired by the supplied reference */
+body{
+  background-color:#f7fafc;
+  background-image:
+    linear-gradient(to right, rgba(91,145,190,.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(91,145,190,.15) 1px, transparent 1px),
+    radial-gradient(ellipse at 78% 0%, rgba(191,228,247,.42), transparent 46%);
+  background-size:45px 45px,45px 45px,100% 620px;
+  background-position:12px 19px,12px 19px,top right;
+  background-repeat:repeat,repeat,no-repeat;
+  background-attachment:fixed;
+}
+.site-header{background:rgba(247,250,252,.88)}
+.ticker{background:rgba(255,255,255,.92)}
+@media(max-width:680px){
+  body{background-size:38px 38px,38px 38px,100% 520px;background-position:10px 12px,10px 12px,top right}
+}
