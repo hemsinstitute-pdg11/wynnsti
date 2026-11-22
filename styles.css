@@ -320,3 +320,77 @@ html{scroll-behavior:smooth}
   .chip-tech{left:-5px}
   .chip-trade{right:-4px}
 }
+
+/* Mobile hero composition: copy on the left, portrait card on the right */
+@media(max-width:680px){
+  .hero{
+    width:calc(100% - 32px);
+    min-height:0;
+    padding:62px 0 42px;
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(132px,.82fr);
+    align-items:center;
+    gap:8px;
+  }
+  .hero-copy{order:1;min-width:0}
+  .hero-visual{
+    order:2;
+    width:100%;
+    height:290px;
+    min-width:0;
+    margin:0;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero .eyebrow{font-size:7px;letter-spacing:.09em;gap:6px}
+  .hero .status-dot{width:5px;height:5px;flex:0 0 5px}
+  .hero-kicker{font-size:12px;line-height:1.4;margin:17px 0 5px}
+  .hero h1{
+    font-size:clamp(27px,7.4vw,34px);
+    line-height:1.05;
+    letter-spacing:-.065em;
+    overflow-wrap:normal;
+  }
+  .hero h1 br{display:none}
+  .hero-description{font-size:10px;line-height:1.6;margin:13px 0 15px}
+  .hero-actions{gap:8px;align-items:flex-start;flex-direction:column}
+  .hero-actions .button{font-size:9px;padding:10px 12px;gap:10px;border-radius:10px}
+  .hero-meta{font-size:7px;letter-spacing:.06em;gap:7px;margin-top:22px}
+  .meta-line{width:17px;flex:0 0 17px}
+  .portrait-card{
+    width:100%;
+    max-width:190px;
+    height:258px;
+    padding:8px;
+    margin:0;
+    border-radius:16px;
+    transform:rotate(1deg);
+  }
+  .portrait-top{font-size:6px;letter-spacing:.06em;padding:1px 1px 7px}
+  .live-indicator{font-size:6px}
+  .portrait-frame{height:183px;border-radius:10px}
+  .portrait-caption{padding:8px 2px 0}
+  .portrait-caption strong{font-size:10px}
+  .portrait-caption div span{font-size:6px;line-height:1.35}
+  .float-chip{gap:6px;padding:7px 8px;transform:scale(.72);transform-origin:center}
+  .chip-tech{left:-38px;top:54px}
+  .chip-trade{right:-36px;bottom:43px}
+  .chip-icon{width:23px;height:23px;font-size:13px;border-radius:7px}
+  .float-chip small{font-size:6px}
+  .float-chip b{font-size:8px}
+  .orbit-a{width:190px;height:145px}
+  .orbit-b{width:210px;height:165px}
+  .visual-coordinate{right:-3px;bottom:1px;font-size:5px;letter-spacing:.06em}
+}
+@media(max-width:390px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(122px,.76fr);gap:6px;width:calc(100% - 28px)}
+  .hero h1{font-size:clamp(25px,7.1vw,29px)}
+  .hero-description{font-size:9px}
+  .hero-visual{height:270px}
+  .portrait-card{height:240px;padding:7px}
+  .portrait-frame{height:168px}
+  .chip-tech{left:-42px}
+  .chip-trade{right:-40px}
+}
