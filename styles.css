@@ -145,3 +145,41 @@ body{
   .site-header.at-home{background:transparent;box-shadow:none;border-color:transparent}
   .site-header.at-home .main-nav{background:rgba(255,255,255,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 }
+
+/* Smooth card motion and scroll reveal */
+html{scroll-behavior:smooth}
+.portrait-card,.focus-card,.portfolio-card,.contact-panel,.float-chip{
+  will-change:transform;
+  transition:
+    transform .65s cubic-bezier(.22,1,.36,1),
+    box-shadow .65s cubic-bezier(.22,1,.36,1),
+    border-color .45s ease,
+    opacity .55s ease;
+}
+.focus-card:hover{transform:translateY(-8px)}
+.portfolio-card:hover{transform:translateY(-9px) scale(1.012)}
+.portrait-card:hover{transform:translateY(-5px) rotate(0deg);box-shadow:0 30px 65px rgba(43,72,112,.19)}
+.float-chip{animation:chip-drift 6s ease-in-out infinite}
+.chip-trade{animation-delay:-3s}
+@keyframes chip-drift{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.motion-ready .portrait-card,
+.motion-ready .focus-card,
+.motion-ready .portfolio-card,
+.motion-ready .contact-panel{
+  opacity:0;
+  transform:translateY(24px);
+}
+.motion-ready .portrait-card.is-visible,
+.motion-ready .focus-card.is-visible,
+.motion-ready .portfolio-card.is-visible,
+.motion-ready .contact-panel.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.motion-ready .portfolio-card:hover.is-visible{transform:translateY(-9px) scale(1.012)}
+.motion-ready .focus-card:hover.is-visible{transform:translateY(-8px)}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .float-chip{animation:none}
+  .motion-ready .portrait-card,.motion-ready .focus-card,.motion-ready .portfolio-card,.motion-ready .contact-panel{opacity:1;transform:none}
+}
