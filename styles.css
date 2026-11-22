@@ -482,3 +482,44 @@ body{color:#18263b}
  .site-footer{width:calc(100% - 36px);gap:12px;flex-wrap:wrap;padding:20px 0}.site-footer>span{order:3;width:100%}
 }
 @media(max-width:390px){.home-hero{grid-template-columns:minmax(0,1fr) minmax(118px,.76fr);gap:8px}.home-copy h1{font-size:26px}.home-description{font-size:9px}.home-portrait-frame{height:190px}.home-hero .hero-actions{gap:7px}.home-hero .hero-actions .button{padding:10px 9px;font-size:8px}}
+
+/* Restore continuous floating motion across the new multi-page cards */
+@keyframes wynsti-card-float{
+  0%,100%{translate:0 0;rotate:0deg}
+  25%{translate:0 -7px;rotate:-.35deg}
+  50%{translate:0 -13px;rotate:.35deg}
+  75%{translate:0 -6px;rotate:-.2deg}
+}
+.home-portrait-card,
+.home-links a,
+.simple-info-card,
+.page-aside,
+.contact-page-panel{
+  animation:wynsti-card-float 4.6s ease-in-out infinite;
+  will-change:translate;
+}
+.home-links a:nth-child(2),
+.simple-info-card:nth-child(2){animation-delay:-1.5s}
+.home-links a:nth-child(3),
+.simple-info-card:nth-child(3){animation-delay:-3s}
+.page-aside{animation-delay:-2.2s}
+.contact-page-panel{animation-delay:-1.1s}
+.home-portrait-card:hover,
+.home-links a:hover,
+.simple-info-card:hover,
+.page-aside:hover,
+.contact-page-panel:hover{
+  animation-play-state:paused;
+  translate:0 -16px;
+}
+@media(max-width:760px){
+  .home-portrait-card,.home-links a,.simple-info-card,.page-aside,.contact-page-panel{
+    animation-duration:4.2s;
+  }
+  .home-links a:hover,.simple-info-card:hover{translate:0 -10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-portrait-card,.home-links a,.simple-info-card,.page-aside,.contact-page-panel{
+    animation:none!important;translate:none!important;rotate:none!important;will-change:auto;
+  }
+}
