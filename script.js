@@ -1,67 +1,33 @@
-const menuToggle = document.querySelector(".menu-toggle");
-const mainNav = document.querySelector(".main-nav");
-
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute("aria-label", isOpen ? "Tutup navigasi" : "Buka navigasi");
-  });
-
-  mainNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Buka navigasi");
-    });
-  });
+const menuToggle=document.querySelector(".menu-toggle");
+const mainNav=document.querySelector(".main-nav");
+if(menuToggle&&mainNav){
+ menuToggle.addEventListener("click",()=>{
+  const open=mainNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded",String(open));
+  menuToggle.setAttribute("aria-label",open?"Tutup navigasi":"Buka navigasi");
+ });
+ mainNav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  mainNav.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");
+ }));
 }
-
-const sections = document.querySelectorAll("main section[id]");
-const navLinks = document.querySelectorAll(".nav-link");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
-      });
-    });
-  }, { rootMargin: "-35% 0px -55% 0px" });
-
-  sections.forEach((section) => observer.observe(section));
+const current=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+document.querySelectorAll(".nav-link").forEach(a=>{
+ const target=(a.getAttribute("href")||"").toLowerCase();
+ a.classList.toggle("active",target===current);
+});
+const year=document.getElementById("year");
+if(year)year.textContent=new Date().getFullYear();
+const header=document.querySelector(".site-header");
+if(header){
+ const update=()=>header.classList.toggle("scrolled",window.scrollY>12);
+ update();window.addEventListener("scroll",update,{passive:true});
 }
-
-const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
-const siteHeader = document.querySelector(".site-header");
-const homeSection = document.querySelector("#home");
-
-if (siteHeader && homeSection && "IntersectionObserver" in window) {
-  const homeObserver = new IntersectionObserver(([entry]) => {
-    siteHeader.classList.toggle("at-home", entry.isIntersecting);
-  }, { threshold: 0.08 });
-  homeObserver.observe(homeSection);
-}
-
-/* Reveal cards gently as they enter the viewport */
-if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.documentElement.classList.add("motion-ready");
-  const motionItems = document.querySelectorAll(
-    ".portrait-card, .focus-card, .portfolio-card, .contact-panel"
-  );
-  const motionObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const siblings = [...entry.target.parentElement.children].filter((item) =>
-        item.matches(".focus-card, .portfolio-card")
-      );
-      const index = siblings.indexOf(entry.target);
-      entry.target.style.transitionDelay = index >= 0 ? `${index * 100}ms` : "0ms";
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.14, rootMargin: "0px 0px -35px 0px" });
-  motionItems.forEach((item) => motionObserver.observe(item));
+if("IntersectionObserver"in window&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+ document.documentElement.classList.add("motion-ready");
+ const cards=document.querySelectorAll(".simple-info-card,.home-links a,.home-portrait-card,.contact-page-panel");
+ const reveal=new IntersectionObserver((entries,observer)=>entries.forEach(entry=>{
+  if(!entry.isIntersecting)return;
+  entry.target.classList.add("is-visible");observer.unobserve(entry.target);
+ }),{threshold:.12,rootMargin:"0px 0px -25px 0px"});
+ cards.forEach(card=>reveal.observe(card));
 }
