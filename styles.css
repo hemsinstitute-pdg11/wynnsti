@@ -97,3 +97,6 @@ body{background:var(--bg);color:var(--text)}
   .portrait-card{width:275px;height:430px}
   .portrait-frame{height:330px}
 }
+
+/* Keep the fallback monogram hidden whenever the real profile photo loads */
+.portrait-fallback[hidden]{display:none!important}
